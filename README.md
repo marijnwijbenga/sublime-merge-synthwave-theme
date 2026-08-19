@@ -1,4 +1,4 @@
-# Cyberpunk Signal — Sublime Merge
+# Cyberpunk Theme — Sublime Merge
 
 A Sublime Merge theme matching my Konsole profile and Neovim colorscheme, so a
 diff here reads like the same file in the editor and the window doesn't clash
