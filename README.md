@@ -41,7 +41,7 @@ Two sources, which turned out to hold the same palette:
 | --- | --- | --- |
 | `background` | `#000018` | Konsole `Background` / `base00` |
 | `foreground` | `#ABB5C7` | `Foreground` / `base05` |
-| `comments` | `#71809C` | `Color0Intense` / `base03` |
+| `comments` | `#919CB2` | `Color0Intense` / `base03`, lightened — see below |
 | `blue` | `#81A0FF` | `Color4Intense` / `base0D` |
 | `cyan` | `#3FE0D8` | `Color6Intense` |
 | `accent` | `#27BAB5` | `Color6` / `base0C` |
@@ -51,8 +51,8 @@ Two sources, which turned out to hold the same palette:
 | `red` | `#FF6B8F` | `Color1Intense` |
 | `orange` | `#4FB1E2` | `Color4` / `base09` — see below |
 | `yellow` | `#D394B9` | `Color3` / `base0A` — see below |
-| `brown` | `#8189AE` | `ForegroundFaint` / `base0F` |
-| `violet` | `#7F5DD0` | nvim `SnacksIndentScope` |
+| `brown` | `#949ABA` | `ForegroundFaint` / `base0F`, lightened — see below |
+| `violet` | `#A890DF` | nvim `SnacksIndentScope`, lightened — see below |
 | `white` | `#E2E8F2` | `ForegroundIntense` |
 | `cursor` | `#3DFF9A` | `Color2Intense` — chosen, see below |
 | `diffAdded` | `#00FF95` | `Color2Intense`, max chroma — see below |
@@ -137,6 +137,68 @@ disagreed with what base16 gives the same token in nvim:
 | `constant.other` | cyan | orange | `base09` |
 | `constant.character.escape` | yellow | cyan | `base0C` |
 | `entity.name.tag` | red | purple | `base08` |
+
+## Contrast
+
+Every text/background pair the theme produces was measured against WCAG AA
+(4.5:1 for body text). This included resolving the bundled
+`Merge.sublime-theme`'s own variables with this palette applied, because of the
+naming problem below. 52 resolvable pairs, all now at or above 4.5:1; the
+lowest is 4.53:1 (comments on the changed-word diff block).
+
+### The naming problem
+
+Meetio names its variables in camelCase — `hazardButtonBg`, `labelColor`,
+`authorFg`. The bundled `Merge.sublime-theme` reads **snake_case** names that it
+defines itself: `hazard_button_bg`, `label_color`, `author_fg`. The camelCase
+names only take effect where Meetio's own rules reference them; everywhere else
+the bundled defaults applied, and those are written for a light window.
+
+The result was dark-gray-on-near-black in a lot of chrome: `author_fg`,
+`disclosure_fg`, `icon_button_fg`, `preview_fg` and `hunk_button_fg` all
+resolved to near-#000000 or #404040 against `#000018` — between 1.01:1 and
+2.00:1. Several annotation badges had `fg` and `bg` resolving to the *same*
+colour, i.e. 1.00:1 and invisible. This theme now defines both spellings, so
+whichever path is live is correct.
+
+Worth knowing if you fork this: `hazard_button_fg` in the bundled theme is the
+literal string `"white"`, not a variable. White on the palette's `red`
+(`#FF6B8F`) is 2.71:1, so `hazard_button_bg` is `red` at `l(- 32%)` — that
+brings it to 6.05:1 without touching `red` itself, which is fine everywhere
+else it's used.
+
+### What moved for contrast
+
+Three palette values were lightened. These are the only places the palette
+deliberately departs from the Konsole/nvim source:
+
+| | was | now | why |
+| --- | --- | --- | --- |
+| `comments` | `#71809C` | `#919CB2` | 3.14:1 on the removed-word diff block |
+| `brown` | `#8189AE` | `#949ABA` | 3.65:1, same place |
+| `violet` | `#7F5DD0` | `#A890DF` | 3.87:1 on the lightest panel |
+
+`comments` matters most: at `#71809C` it passed on the window background
+(5.20:1) and failed only inside diff blocks, which is precisely where comments
+get read. The nvim config pins `base03` low on purpose so comments recede —
+that intent survives, since `#919CB2` is still clearly dimmer than the `#ABB5C7`
+body text.
+
+Six alphas were raised, all of them text that had been washed out to
+1.4–4.0:1:
+
+| | was | now | result |
+| --- | --- | --- | --- |
+| `gutter_foreground` (line numbers) | `0.20` | `0.65` | 1.37 → 4.56:1 |
+| `invalid` | `0.40` | `0.86` | 1.71 → 4.52:1 |
+| `authorFg` / `author_fg` | `0.40` | `0.65` | 2.32 → 4.56:1 |
+| `tabLabelColor` | `0.50` | `0.65` | 3.06 → 4.56:1 |
+| `deprecated` | `0.63` | `0.70` | 3.82 → 4.52:1 |
+| `helpLabelColor` | `0.60` | `0.65` | 4.01 → 4.56:1 |
+
+Line numbers are the one judgement call: nvim's indent guides sit at 2.5:1 on
+purpose, but gutter numbers are information you read rather than decoration, so
+they get the text threshold.
 
 ## Transparency
 
