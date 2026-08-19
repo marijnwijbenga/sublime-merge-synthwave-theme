@@ -6,6 +6,10 @@ diff here reads like the same file in the editor.
 Derived from [Meetio Theme](https://github.com/meetio-theme/merge-meetio-theme)
 (Palenight, MIT), palette replaced and some scope rules re-pointed.
 
+## Demo
+<img width="3061" height="1777" alt="image" src="https://github.com/user-attachments/assets/0240680b-88cc-4df1-b6bd-37a1ffed3a87" />
+
+
 ## Install
 
 ```sh
