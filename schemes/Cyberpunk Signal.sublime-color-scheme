@@ -8,8 +8,8 @@
         "cursor": "#3DFF9A",
         "comments": "#71809C",
         "deprecated": "#D394B9A1",
-        "diffAdded": "#3DFF9A",
-        "diffDeleted": "#FA42A4",
+        "diffAdded": "#00FF95",
+        "diffDeleted": "#DB0677",
         "diffModified": "#4FB1E2",
         "invalid": "#FF386066",
         "black": "#000000",
@@ -604,22 +604,22 @@
         {
             "name": "DIFF - Deleted",
             "scope": "diff.deleted",
-            "background": "color(var(diffDeleted) alpha(0.20))"
+            "background": "color(var(diffDeleted) alpha(0.34))"
         },
         {
             "name": "DIFF - Deleted Char",
             "scope": "diff.deleted.char",
-            "background": "color(var(diffDeleted) alpha(0.30))"
+            "background": "color(var(diffDeleted) alpha(0.46))"
         },
         {
             "name": "DIFF - Inserted",
             "scope": "diff.inserted",
-            "background": "color(var(diffAdded) alpha(0.17))"
+            "background": "color(var(diffAdded) alpha(0.16))"
         },
         {
             "name": "DIFF - Inserted Char",
             "scope": "diff.inserted.char",
-            "background": "color(var(diffAdded) alpha(0.24))"
+            "background": "color(var(diffAdded) alpha(0.23))"
         },
         {
             "name": "GIT - Text",

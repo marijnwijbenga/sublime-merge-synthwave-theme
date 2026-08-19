@@ -55,8 +55,8 @@ Two sources, which turned out to hold the same palette:
 | `violet` | `#7F5DD0` | nvim `SnacksIndentScope` |
 | `white` | `#E2E8F2` | `ForegroundIntense` |
 | `cursor` | `#3DFF9A` | `Color2Intense` — chosen, see below |
-| `diffAdded` | `#3DFF9A` | `Color2Intense` |
-| `diffDeleted` | `#FA42A4` | chosen, see below |
+| `diffAdded` | `#00FF95` | `Color2Intense`, max chroma — see below |
+| `diffDeleted` | `#DB0677` | chosen, see below |
 | `diffModified` | `#4FB1E2` | `Color4` |
 
 ### Choices that aren't a straight copy
@@ -69,10 +69,19 @@ annotations and the "unmerged" icon; those are mauve here, not yellow.
 **Cursor.** Neither config sets a caret color, so `#3DFF9A` is a pick —
 bright enough to locate, not used for anything else.
 
-**`diffDeleted` is the one color from neither source.** The palette jumps
-straight from magenta (`#F182E8`, hue 305°) to red (`#FF3860`, hue 348°) with
-nothing between, and the removed-line block wanted to sit in that gap.
-`#FA42A4` is hue 328°.
+**The two diff colors are tuned, not copied.** `diffDeleted` sits in a gap:
+the palette jumps straight from magenta (`#F182E8`, hue 305°) to red
+(`#FF3860`, hue 348°) with nothing between, so `#DB0677` is hue 328° at 44%
+lightness. `diffAdded` is `Color2Intense` (`#3DFF9A`) pushed to full chroma —
+that colour already pins its green channel at 255, so the only way to make the
+block read more neon is to drop lightness to 50% (chroma 0.76 → 1.00) and let
+the alpha do the brightening.
+
+The two sides run different alphas because their colours differ in luminance.
+A darker base needs more overlay to register at all: `#DB0677` at the added
+side's 0.16 would sit at 1.10:1 against the page, near upstream's invisible
+1.08:1. The alphas are picked per side to land both blocks in the same
+1.5–2.0:1 band.
 
 **Accent ladder widened.** Upstream derives its panel shades as
 `background +2/+4/+10%` lightness, tuned for Palenight's `#292D3E` (L≈20%).
@@ -87,15 +96,15 @@ palette colors upstream didn't route through a variable. They come from
 
 ## Diff blocks
 
-One palette color per side, both at the neon end. Alphas are set so the block
-is visible against `#000018` while body text on top of it stays above the
-4.5:1 WCAG AA threshold — the `.char` (changed-word) variant is stronger than
-its line so edited words read out of the changed line.
+One color per side, both at full chroma. Alphas are set so the block is
+visible against `#000018` while body text on top of it stays above the 4.5:1
+WCAG AA threshold — the `.char` (changed-word) variant is stronger than its
+line so edited words read out of the changed line.
 
 | | color | line | char | text on char |
 | --- | --- | --- | --- | --- |
-| added | `#3DFF9A` | `0.17` → `#0A2B2E` | `0.24` → `#0F3D37` | 5.8:1 |
-| removed | `#FA42A4` | `0.20` → `#320D34` | `0.30` → `#4B1442` | 6.9:1 |
+| added | `#00FF95` | `0.16` → `#00292C` | `0.23` → `#003B35` | 6.1:1 |
+| removed | `#DB0677` | `0.34` → `#4A0238` | `0.46` → `#650344` | 6.2:1 |
 
 Upstream had all four at `0.10`, which blends to ~1.10:1 against this
 background — effectively invisible, and the `.char` highlight was
