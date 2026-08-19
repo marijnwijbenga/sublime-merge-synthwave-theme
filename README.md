@@ -53,7 +53,8 @@ From two sources that turned out to hold the same colors:
 | `brown` | `#949ABA` | `ForegroundFaint` / `base0F`, lightened |
 | `violet` | `#A890DF` | nvim `SnacksIndentScope`, lightened |
 | `white` | `#E2E8F2` | `ForegroundIntense` |
-| `cursor` | `#3DFF9A` | `Color2Intense` — chosen, nothing sets a caret |
+| `signal` | `#FCEE0A` | chosen — the attention colour, see below |
+| `cursor` | `#FCEE0A` | `signal` |
 | `diffAdded` | `#00FF95` | `Color2Intense` at full chroma |
 | `diffDeleted` | `#DB0677` | chosen — see below |
 | `diffModified` | `#4FB1E2` | `Color4` |
@@ -84,6 +85,28 @@ Twelve syntax scopes were re-pointed where Meetio's color for a token
 disagreed with the base16 slot nvim uses for it — keywords and `storage.type`
 to pink (`base0E`), symbol operators to plain foreground (`base05`), language
 constants to `base09`, escapes to `base0C`, tags to `base08`.
+
+## Color by meaning
+
+The chrome was `#ABB5C7` on near-black almost everywhere, so all the color
+lived in the diff. Hues now carry status:
+
+| meaning | color | where |
+| --- | --- | --- |
+| attention | `signal` `#FCEE0A` | search match, merge conflict, caret, focus ring |
+| added / staged | `green` | staged icon and badge, graph edge |
+| removed | `pink` | unmerged badge, graph edge |
+| local / modified | `blue` | modified badge, branch stats |
+| structure | `cyan` | sidebar headings, selected tab border |
+| interactive | `accent` | disclosure arrows, input border, progress, spinner |
+
+`signal` is deliberately scarce — four low-frequency things, all of which mean
+"look here now". It is deliberately **not** on types (`base0A`), where base16
+conventionally puts a yellow: types appear on every other line, and a 17:1 acid
+yellow there is fatigue rather than emphasis.
+
+The commit graph now runs blue → purple → pink → cyan → signal → mint instead of
+three hues plus two dulled ones.
 
 ## Contrast
 
