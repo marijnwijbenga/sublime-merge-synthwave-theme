@@ -2498,6 +2498,13 @@
             ]
         },
         {
+            "class": "table_of_contents_heading",
+            "attributes": [
+                "selected"
+            ],
+            "color": "var(purple)"
+        },
+        {
             "class": "scroll_bar_control",
             "parents": [
                 {
