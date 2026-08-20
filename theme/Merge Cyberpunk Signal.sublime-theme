@@ -73,7 +73,7 @@
         "sideBarContainerBg": "var(background)",
         "sideBarContainerBgWithGraph": "var(accentLight)",
         "tableOfContentsBg": "var(background)",
-        "tableOfContentsFg": "var(green)",
+        "tableOfContentsFg": "var(purple)",
         "tableOfContentsHeadingFg": "var(cyan)",
         "tableOfContentsRowBg": "var(accentLight)",
         "tableOfContentsRowBgHover": "var(accentLighter)",
