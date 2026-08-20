@@ -5,7 +5,7 @@
         "foreground": "#ABB5C7",
         "background": "#000018",
         "comments": "#919CB2",
-        "signal": "#D3B069",
+        "signal": "#FFB840",
         "staged_icon_fg": "var(green)",
         "blue": "#81A0FF",
         "brown": "#949ABA",
@@ -2584,7 +2584,7 @@
             ],
             "font.face": "var(font_face)",
             "font.size": "var(font_size)",
-            "color": "var(commitSummaryFgPrimary)"
+            "color": "var(green)"
         },
         {
             "class": "index_action_label",
@@ -2596,7 +2596,7 @@
             "font.face": "var(font_face)",
             "font.size": "var(font_size)",
             "font.italic": true,
-            "color": "var(commitSummaryFgSecondary)"
+            "color": "var(green)"
         },
         {
             "class": "message_label",
