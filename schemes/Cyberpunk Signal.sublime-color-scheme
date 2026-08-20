@@ -3,10 +3,10 @@
     "author": "Marijn Wijbenga",
     "variables": {
         "accent": "#27BAB5",
-        "signal": "#FFB840",
+        "signal": "#D3A040",
         "foreground": "#ABB5C7",
         "background": "#000018",
-        "cursor": "#FFB840",
+        "cursor": "#D3A040",
         "comments": "#919CB2",
         "deprecated": "#D394B9B3",
         "diffAdded": "#00FF95",

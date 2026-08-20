@@ -5,7 +5,7 @@
         "foreground": "#ABB5C7",
         "background": "#000018",
         "comments": "#919CB2",
-        "signal": "#FFB840",
+        "signal": "#D3A040",
         "staged_icon_fg": "var(green)",
         "blue": "#81A0FF",
         "brown": "#949ABA",
@@ -73,7 +73,7 @@
         "sideBarContainerBg": "var(background)",
         "sideBarContainerBgWithGraph": "var(accentLight)",
         "tableOfContentsBg": "var(background)",
-        "tableOfContentsFg": "var(purple)",
+        "tableOfContentsFg": "var(green)",
         "tableOfContentsHeadingFg": "var(cyan)",
         "tableOfContentsRowBg": "var(accentLight)",
         "tableOfContentsRowBgHover": "var(accentLighter)",
@@ -2008,7 +2008,7 @@
                     "class": "side_bar_container"
                 }
             ],
-            "fg": "var(purple)"
+            "fg": "var(green)"
         },
         {
             "class": "tab_body_container",
