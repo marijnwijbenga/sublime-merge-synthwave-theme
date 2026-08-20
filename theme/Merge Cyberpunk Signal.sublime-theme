@@ -2011,6 +2011,18 @@
             "fg": "var(green)"
         },
         {
+            "class": "label_control",
+            "parents": [
+                {
+                    "class": "side_bar_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "fg": "var(purple)"
+        },
+        {
             "class": "tab_body_container",
             "settings": [
                 "overlay_scroll_bars"
@@ -4486,6 +4498,19 @@
                 "selected"
             ],
             "layer0.opacity": 1
+        },
+        {
+            "class": "tree_row",
+            "attributes": [
+                "heading"
+            ]
+        },
+        {
+            "class": "tree_row",
+            "attributes": [
+                "selected",
+                "heading"
+            ]
         },
         {
             "class": "label_control",
