@@ -5,7 +5,7 @@
         "foreground": "#ABB5C7",
         "background": "#000018",
         "comments": "#919CB2",
-        "signal": "#FCEE0A",
+        "signal": "#D3B069",
         "staged_icon_fg": "var(green)",
         "blue": "#81A0FF",
         "brown": "#949ABA",
@@ -29,7 +29,7 @@
         "accentLighter": "color(var(background) l(+ 6%))",
         "accentLightest": "color(var(background) l(+ 12%))",
         "darkGray": "hsl(210, 10%, 10%)",
-        "labelColor": "var(foreground)",
+        "labelColor": "var(purple)",
         "helpLabelColor": "color(var(foreground) a(0.65))",
         "branchStatsLabelBg": "color(var(blue) a(0.18))",
         "titleBarStyle": "dark",
@@ -62,8 +62,8 @@
         "disclosureFg": "var(accent)",
         "commitListBg": "var(accentLight)",
         "commitRowBgHover": "var(accentLighter)",
-        "commitSummaryFgPrimary": "var(foreground)",
-        "commitSummaryFgSecondary": "var(comments)",
+        "commitSummaryFgPrimary": "var(purple)",
+        "commitSummaryFgSecondary": "var(purple)",
         "commitEdge0": "var(blue)",
         "commitEdge1": "var(purple)",
         "commitEdge2": "var(pink)",
@@ -73,10 +73,12 @@
         "sideBarContainerBg": "var(background)",
         "sideBarContainerBgWithGraph": "var(accentLight)",
         "tableOfContentsBg": "var(background)",
-        "tableOfContentsFg": "var(foreground)",
+        "tableOfContentsFg": "var(purple)",
         "tableOfContentsHeadingFg": "var(cyan)",
         "tableOfContentsRowBg": "var(accentLight)",
         "tableOfContentsRowBgHover": "var(accentLighter)",
+        "tableOfContentsRowBgSelected": "var(signal)",
+        "tableOfContentsFgSelected": "var(background)",
         "detailPanelBg": "var(background)",
         "fieldNameFg": "var(foreground)",
         "authorFg": "color(var(--foreground) a(0.65))",
@@ -171,6 +173,8 @@
         "tabLabelColor": "color(var(foreground) a(0.65))",
         "tabLabelColorHover": "color(var(foreground) a(1.0))",
         "tabLabelColorSelected": "color(var(foreground) a(1.0))",
+        "detailsTabBgSelected": "var(signal)",
+        "detailsTabFgSelected": "var(background)",
         "radioBack": "var(--background)",
         "radioSelected": "var(foreground)",
         "radioBorderSelected": "var(foreground)",
@@ -227,7 +231,7 @@
         "location_bar_fg": "var(foreground)",
         "location_bar_heading_fg": "var(cyan)",
         "tab_button_fg": "var(foreground)",
-        "table_of_contents_fg": "var(foreground)",
+        "table_of_contents_fg": "var(purple)",
         "table_of_contents_heading_fg": "var(cyan)",
         "unmerged_icon_fg": "var(signal)",
         "recent_icon_fg": "var(yellow)",
@@ -699,6 +703,20 @@
             "layer0.tint": "var(locationBarFg)"
         },
         {
+            "class": "tab",
+            "parents": [
+                {
+                    "class": "details_tab_bar"
+                }
+            ],
+            "attributes": [
+                "selected"
+            ],
+            "layer0.tint": "var(detailsTabBgSelected)",
+            "layer0.opacity": 1,
+            "layer1.opacity": 0
+        },
+        {
             "class": "label_control",
             "parents": [
                 {
@@ -729,7 +747,52 @@
                     ]
                 }
             ],
-            "fg": "var(foreground)"
+            "fg": "var(detailsTabFgSelected)"
+        },
+        {
+            "class": "icon_text",
+            "parents": [
+                {
+                    "class": "details_tab_bar"
+                },
+                {
+                    "class": "tab",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "color": "var(detailsTabFgSelected)"
+        },
+        {
+            "class": "file_icon",
+            "parents": [
+                {
+                    "class": "details_tab_bar"
+                },
+                {
+                    "class": "tab",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "layer0.tint": "color(var(background) a(0.25))"
+        },
+        {
+            "class": "tab_close_button",
+            "parents": [
+                {
+                    "class": "details_tab_bar"
+                },
+                {
+                    "class": "tab",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "layer0.tint": "var(detailsTabFgSelected)"
         },
         {
             "class": "checkbox_box_control",
@@ -1939,6 +2002,15 @@
             "layer0.tint": "var(sideBarContainerBgWithGraph)"
         },
         {
+            "class": "label_control",
+            "parents": [
+                {
+                    "class": "side_bar_container"
+                }
+            ],
+            "fg": "var(purple)"
+        },
+        {
             "class": "tab_body_container",
             "settings": [
                 "overlay_scroll_bars"
@@ -2350,8 +2422,68 @@
             "attributes": [
                 "selected"
             ],
-            "layer0.tint": "var(tableOfContentsRowBgHover)",
+            "layer0.tint": "var(tableOfContentsRowBgSelected)",
             "layer0.opacity": 1
+        },
+        {
+            "class": "table_of_contents_label",
+            "parents": [
+                {
+                    "class": "table_of_contents_row_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "color": "var(tableOfContentsFgSelected)"
+        },
+        {
+            "class": "icon_text",
+            "parents": [
+                {
+                    "class": "table_of_contents_row_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "color": "var(tableOfContentsFgSelected)"
+        },
+        {
+            "class": "file_icon",
+            "parents": [
+                {
+                    "class": "table_of_contents_row_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "layer0.tint": "color(var(background) a(0.25))"
+        },
+        {
+            "class": "close_button_control",
+            "parents": [
+                {
+                    "class": "table_of_contents_row_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "layer0.tint": "var(tableOfContentsFgSelected)"
+        },
+        {
+            "class": "tab_close_button",
+            "parents": [
+                {
+                    "class": "table_of_contents_row_container",
+                    "attributes": [
+                        "selected"
+                    ]
+                }
+            ],
+            "layer0.tint": "var(tableOfContentsFgSelected)"
         },
         {
             "class": "table_of_contents_heading",
