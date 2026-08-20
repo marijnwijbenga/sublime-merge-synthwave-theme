@@ -2490,7 +2490,7 @@
             "font.face": "var(font_face)",
             "font.size": "var(font_size)",
             "font.bold": true,
-            "color": "var(locationBarFg)",
+            "color": "var(green)",
             "shadow_color": "var(location_bar_heading_shadow)",
             "shadow_offset": [
                 0,
