@@ -4481,6 +4481,27 @@
             "layer0.opacity": 1
         },
         {
+            "class": "label_control",
+            "parents": [
+                {
+                    "class": "tree_row"
+                }
+            ],
+            "fg": "var(purple)"
+        },
+        {
+            "class": "label_control",
+            "parents": [
+                {
+                    "class": "tree_row",
+                    "attributes": [
+                        "heading"
+                    ]
+                }
+            ],
+            "fg": "var(green)"
+        },
+        {
             "class": "diff_text_control",
             "line_selection_color": [
                 64,
