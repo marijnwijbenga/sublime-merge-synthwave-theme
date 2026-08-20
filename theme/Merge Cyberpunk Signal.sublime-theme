@@ -4509,6 +4509,19 @@
             "fg": "var(green)"
         },
         {
+            "class": "label_control",
+            "parents": [
+                {
+                    "class": "tree_row",
+                    "attributes": [
+                        "selected",
+                        "heading"
+                    ]
+                }
+            ],
+            "fg": "var(purple)"
+        },
+        {
             "class": "diff_text_control",
             "line_selection_color": [
                 64,
